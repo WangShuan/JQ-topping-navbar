@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery固定導覽列案例</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .top {
+      height: 200px;
+      width: 100%;
+    }
+
+    h3 {
+      color: mediumpurple;
+      width: 600px;
+      height: 50px;
+      line-height: 50px;
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    p {
+      width: 350px;
+      height: auto;
+      background-color: rgb(240, 230, 255);
+      line-height: 20px;
+      padding: 10px 20px;
+      border: 1px solid mediumpurple;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    u {
+      background-color: lavender;
+      margin: 0 auto;
+      display: inline-block;
+      color: darkblue;
+    }
+
+    .nav {
+      width: 100%;
+    }
+
+    ul {
+      list-style: none;
+      background-color: rebeccapurple;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    li {
+      display: inline-block;
+      width: 100px;
+      height: 60px;
+      line-height: 60px;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      color: lavender;
+    }
+
+    .title {
+      color: white;
+      font-size: 22px;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      height: 1500px;
+      line-height: 100px;
+      padding: 50px 0;
+      background-color: lavender;
+    }
+
+    .mt {
+      padding-top: 1000px;
+      display: inline-block;
+    }
+  </style>
+  <script src="./jquery-1.12.4.js"></script>
+</head>
+
+<body>
+
+  <div class="top" id="topPart">
+    <h3>固定導覽列案例：</h3>
+
+    <u>
+      //window.scroll > 滾動事件 <br>
+      //width.scrollTop > 滾動高度
+    </u>
+
+    <p>當滾動超過一定高度後讓navbar固定懸浮在上方 <br>
+      並給navbar下的元素添加margin-top</p>
+  </div>
+
+  <div class="nav" id="navBar">
+    <ul>
+      <li class='title'>/導覽列/</li>
+      <li><a href="#">HOME1</a></li>
+      <li><a href="#">HOME2</a></li>
+      <li><a href="#">HOME3</a></li>
+      <li><a href="#">HOME4</a></li>
+      <li><a href="#">HOME5</a></li>
+    </ul>
+  </div>
+  <div class="main" id="mainPart">
+    <div class="content">
+      我是導覽列下面的元素。<br>
+      請試著任意滾動頁面。<br>
+      注意看導覽列位置的變化。<br>
+      <i class="mt">現在可以嘗試滾回最上面。</i>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+
+      $(window).scroll(function () {
+        if ($(this).scrollTop() >= $('.top').height()) {
+          $('.nav').addClass('fixed')
+          $('.main').css('marginTop', $('.nav').height())
+        } else {
+          $('.nav').removeClass('fixed')
+          $('.main').css('marginTop', 0)
+        }
+      })
+
+    })
+  </script>
+</body>
+
+</html>
